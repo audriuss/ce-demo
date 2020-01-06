@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "Demo extension",
+    "version": "0.0.1",
+    "description": "This is demo extension",
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "icons": { 
+        "16": "icons/16.png",
+        "48": "icons/48.png",
+       "128": "icons/128.png" 
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": [ "content.js"]
+        }
+    ],
+    "permissions": ["activeTab"]
+}
