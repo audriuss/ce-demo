@@ -1,4 +1,4 @@
-# Chrome Extension in 10 minutes
+# Chrome Extension for Kids
 A Google Chrome extension is nothing more or less than a collections of JS, HTML CSS and other asset files bundled into zip and renamed to .crx
 
 ## Extension components
@@ -14,22 +14,22 @@ A Google Chrome extension is nothing more or less than a collections of JS, HTML
 * Commands (keyboard shortcuts)
 * Options Page
 
-## Lets build an extension "The Red Painter"
+## Let's build an Extension "The Red Painter"
 
-If you lost during this guide you can always check the repo, it contains finished extension.
+This guide contains only 4 steps. If you lost during the process you can always check already made exntesion inside this repo.
 
 ### Step 1 - Create `manifest.json`
 
-Manifest gives the browser information about the extension, such as the most important files and the permissions the extension might use. It's required
+The Manifest gives browser information about the extension, such as entry files and permissions that extension might use. This is only required file. 
 
-Create your extension manifest, define name, put short description. Don't forget to put icon files (defined in manifest), you can use your own or copy from this repo. Manifest example:
+Inside manifest you need to define name, description, icons, version and manifest verstion. Don't forget to put icons alongisde manifest. You can use your own or copy from this repo. Manifest example:
 ``` json
 {
-    "manifest_version": 2,  // v1 deprecated as of Chrome 18
+    "manifest_version": 2,
     "name": "The Red Painter",
     "version": "0.0.1",
     "description": "It changes page backround to red",
-    "icons": {  // required
+    "icons": {
         "16": "icons/16.png",
         "48": "icons/48.png",
        "128": "icons/128.png" 
@@ -39,7 +39,7 @@ Create your extension manifest, define name, put short description. Don't forget
 
 ### Step 2 - Create a Popup
 
-Popup loads simple html, so let's create `popup.html` containing simple button which will trigger an action:
+The Popup UI loads simple html file. Let's create html containing simple button which will trigger an action, `popup.html`:
 ```html
 <!DOCTYPE html>
 <html>
@@ -61,9 +61,9 @@ Popup loads simple html, so let's create `popup.html` containing simple button w
 
 ```
 
-In Chrome Extension, Content Security Policy does not allow inline javascript. So you have to put your javascript in a .js file and include it in your HTML. An extension's files can be referred using a relative URL. Just as files in an ordinary HTML page.
+Content Security Policy does not allow inline javascript, so you have to put your javascript in a .js file and include it in HTML (`<script src="popup.js"></script>`). An extension's files can be referred using a relative URL, just as files in an ordinary HTML page.
 
-Let's create `popup.js` which would query active tab using and send message to a content script using `chrome.tabs` API (https://developer.chrome.com/extensions/tabs#method-query).
+Let's create `popup.js` which will query active tab and send message to a content script using `chrome.tabs` API (https://developer.chrome.com/extensions/tabs#method-query). P.S. `Chrome` is accessible globally inside extension context.
 
 ```javascript
 document.getElementById("makeRed").addEventListener("click", makePageRed);
@@ -86,7 +86,7 @@ The script uses `chrome.tabs` API, which needs special permissions, so we need t
 ],
 ```
 
-Finally, we need to tell Chrome about our popup, it's defined as browser action inside `manifest.json` as follows:
+Finally, we need to tell Chrome about our popup, it's defined as browser action inside `manifest.json`:
 
 ``` json
 "browser_action": {
@@ -95,9 +95,9 @@ Finally, we need to tell Chrome about our popup, it's defined as browser action 
 ```
 
 ### Step 3 - Create a Content Script
-The content script contains JavaScript that executes in the contexts of a page that has been loaded into the browser. Content scripts can read and modify the DOM of web pages the browser visits.
+The content script contains JavaScript that executes in the contexts of a page that has been loaded into the browser. Scripts can read and modify the DOM of web pages the browser visits.
 
-Let's create a `content.js` scrip which listens popup message and changes page backround color. 
+Let's create a `content.js` script which listens popup message and changes page backround color. 
 
 ```javascript
 chrome.runtime.onMessage.addListener(
