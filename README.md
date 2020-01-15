@@ -7,7 +7,7 @@ A Google Chrome extension is nothing more or less than a collections of JS, HTML
 * Background Script (JS)
 * UI Elements: 
     * Icon
-    * Tooltp
+    * Tooltip
     * Popup (HTML + JS + CSS)
     * Omnibox
     * Context Menu
@@ -16,19 +16,19 @@ A Google Chrome extension is nothing more or less than a collections of JS, HTML
 
 ## Let's build an Extension "The Red Painter"
 
-This guide contains only 4 steps. If you lost during the process you can always check already made exntesion inside this repo.
+This guide contains only 4 steps. If you lost during the process you can always check already made extension inside this repo.
 
 ### Step 1 - Create `manifest.json`
 
 The Manifest gives browser information about the extension, such as entry files and permissions that extension might use. This is only required file. 
 
-Inside manifest you need to define name, description, icons, version and manifest verstion. Don't forget to put icons alongisde manifest. You can use your own or copy from this repo. Manifest example:
+Inside manifest you need to define name, description, icons, version and manifest version. Don't forget to put icons alongside manifest. You can use your own or copy from this repo. Manifest example:
 ``` json
 {
     "manifest_version": 2,
     "name": "The Red Painter",
     "version": "0.0.1",
-    "description": "It changes page backround to red",
+    "description": "It changes page background to red",
     "icons": {
         "16": "icons/16.png",
         "48": "icons/48.png",
@@ -97,7 +97,7 @@ Finally, we need to tell Chrome about our popup, it's defined as browser action 
 ### Step 3 - Create a Content Script
 The content script contains JavaScript that executes in the contexts of a page that has been loaded into the browser. Scripts can read and modify the DOM of web pages the browser visits.
 
-Let's create a `content.js` script which listens popup message and changes page backround color. 
+Let's create a `content.js` script which listens to popup messages and changes the page background color. 
 
 ```javascript
 chrome.runtime.onMessage.addListener(
