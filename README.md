@@ -125,7 +125,7 @@ Content Scripts can be programmatically or declaratively injected to the page. L
 ```
 
 ### Step 4 - Voila! Let's test it
-1) Open `chrome://extension` in Chrome
+1) Open `chrome://extensions` in Chrome
 2) Make sure you have turned on "Developer Mode" on right upper corner
 3) Click "Load unpacked" on left upper corner
 4) Select the extension folder
